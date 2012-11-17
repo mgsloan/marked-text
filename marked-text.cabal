@@ -1,0 +1,28 @@
+Name:                marked-text
+Version:             0.1.0
+Cabal-Version:       >= 1.8
+Synopsis:            Stuff
+Category:            Graphics, GUI
+Description: 
+License:             BSD3
+License-file:        LICENSE
+Author:              Michael Sloan
+Maintainer:          Michael Sloan <mgsloan at gmail>
+Stability:           experimental
+Build-Type:          Simple
+
+Library
+  Build-Depends:     base,
+                     containers,
+                     diagrams-lib,
+                     diagrams-cairo,
+                     fclabels,
+--                     colour,
+                     gtk-toy,
+                     gtk-toy-diagrams
+--                     vector-space,
+--                     vector-space-points
+  Hs-source-dirs:    src
+  ghc-options:       -Wall -fwarn-tabs -O2
+  Exposed-Modules:
+    Graphics.UI.Toy.Text
