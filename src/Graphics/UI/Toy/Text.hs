@@ -1,11 +1,13 @@
-{-# LANGUAGE DeriveDataTypeable
-           , FlexibleInstances
-           , MultiParamTypeClasses
-           , RankNTypes
-           , TemplateHaskell
-           , TupleSections
-           , TypeFamilies
-           , TypeSynonymInstances
+{-# LANGUAGE
+    DeriveDataTypeable
+  , FlexibleContexts
+  , FlexibleInstances
+  , MultiParamTypeClasses
+  , RankNTypes
+  , TemplateHaskell
+  , TupleSections
+  , TypeFamilies
+  , TypeSynonymInstances
   #-}
 -----------------------------------------------------------------------------
 -- |
@@ -28,6 +30,10 @@ module Graphics.UI.Toy.Text
   , addMark, addMarks, removeMark, mutateMarks, filterMarks, clipMarks, clearMarks
   , drawText
 
+  -- * Interactive
+  , textKeyHandler
+
+  -- * Marks
   , StyleState(..), monoStyle
   , CanBeCursor(..), cursorText, moveCursor
   , Mark(..), EmptyMark(..), CursorMark(..), SizeMark(..), SlantMark(..), WeightMark(..)
@@ -47,7 +53,6 @@ import Data.Maybe          ( catMaybes, mapMaybe, listToMaybe )
 import Data.Ord            ( comparing )
 
 import Graphics.UI.Toy.Diagrams
-import Graphics.UI.Toy.Utils ( highlight )
 import Graphics.UI.Toy.Gtk
 
 import System.IO.Unsafe
@@ -388,6 +393,10 @@ textKeyHandler _ ts = ts
 
 
 -- Utils
+highlight :: (PathLike (QDiagram b R2 m), Monoid m, Semigroup m)
+          => Colour Double -> QDiagram b R2 m -> QDiagram b R2 m
+highlight c d = underlayScaled d . fc c $ square 1
+
 mapT :: (a -> b) -> (a, a) -> (b, b)
 mapT f = f *** f
 
