@@ -17,11 +17,8 @@ Library
                      diagrams-lib,
                      diagrams-cairo,
                      fclabels,
---                     colour,
                      gtk-toy,
                      gtk-toy-diagrams
---                     vector-space,
---                     vector-space-points
   Hs-source-dirs:    src
   ghc-options:       -Wall -fwarn-tabs -O2
   Exposed-Modules:

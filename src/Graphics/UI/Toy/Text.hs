@@ -92,9 +92,6 @@ class Mark a where
   splitMark :: Int -> a -> (Maybe a, Maybe a)
   splitMark _ x = (Just x, Just x)
 
-monoStyle :: Style R2
-monoStyle = font "monospace" $ fontSize 18 mempty
-
 emptyText :: MarkedText m
 emptyText = MarkedText "" []
 
@@ -157,7 +154,7 @@ performMerges (x:xs) ys = case msum . map doMerge $ ys of
 --TODO: consider a mark for lines / line #s?
 --TODO: figure out how style will be applied to the text by marks
 
-instance Mark m => Diagrammable Cairo (MarkedText m) where
+instance Mark m => Diagrammable Cairo R2 (MarkedText m) where
   diagram mt = drawText (initialDrawState mt) mt
 
 drawText :: Mark m => DrawState m -> MarkedText m -> CairoDiagram
@@ -358,7 +355,7 @@ instance (Eq m, Mark m, CanBeCursor m)
 instance (Eq m, Mark m, CanBeCursor m)
       => GtkDisplay (MarkedText m) where
   display = displayDiagram
-          $ \mt -> scaleY (-1)
+          $ \mt -> reflectY
                  $ strutY 18
                    ===
                   ( strutX 10 ||| alignT (diagram mt) )
