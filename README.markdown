@@ -3,9 +3,10 @@ such that marks survive editing.  These marks change how the text is rendered
 and also have behaviors (in the form of a typeclass instance) which determine
 how they behave during text editing.
 
-It was originally used in https://github.com/mgsloan/panopti, and now its more
-recent, less scope-ey descendent https://github.com/mgsloan/diagrams-ghci .
-It used to reside in https://github.com/mgsloan/gtk-toy-diagrams .
+It was originally used in [panopti](https://github.com/mgsloan/panopti), and
+now its more recent, less scope-ey descendent
+[diagrams-ghci](https://github.com/mgsloan/diagrams-ghci).
+It used to reside in [gtk-toy-diagrams](https://github.com/mgsloan/gtk-toy-diagrams).
 
 Ideally this would use a btree / fingertree, and distribute the marks on the
 inner nodes, but that's pending it being used for something that actually
